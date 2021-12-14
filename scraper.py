@@ -80,9 +80,12 @@ def get_videos(items):
 
         # This may be unclear, essentially the way the API works is that if a video has comments or ratings disabled
         # then it has no feature for it, thus if they don't exist in the statistics dict we know they are disabled
-        if 'likeCount' in statistics and 'dislikeCount' in statistics:
+
+        # Dislike was DISABLED by YouTube from 13th-Dec-2021
+        if 'likeCount' in statistics:  # and 'dislikeCount' in statistics:
             likes = statistics['likeCount']
-            dislikes = statistics['dislikeCount']
+            # dislikes = statistics['dislikeCount']
+            dislikes = 0
         else:
             ratings_disabled = True
             likes = 0
